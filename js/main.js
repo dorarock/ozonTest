@@ -2,58 +2,74 @@ let container = document.querySelector('.row');
 let itemsLength = document.querySelector('.itemsLength');
 let goods = [
     {
-        name: "Стул",
+        id: 1,
+        name: "Стул Lars желтый пластик Ш.48 В.83 Г.56 Вес 5.5кг...",
         price: 7132,
         discount: 0,
-        image: "img/",
+        image: "img/1.jpg",
         isInCart: false
     },
 
     {
-        name: "Стул",
-        price: 1000000,
+        id: 2,
+        name: "Стул Lars желтый пластик Ш.48 В.83 Г.56 Вес 5.5кг...",
+        price: 10000,
         discount: 30,
-        image: "img/",
+        image: "img/2.jpg",
         isInCart: false
     },
 
     {
-        name: "Стул",
+        id: 3,
+        name: "Стул Lars желтый пластик Ш.48 В.83 Г.56 Вес 5.5кг...",
         price: 7132,
         discount: 0,
-        image: "img/",
+        image: "img/3.jpg",
         isInCart: false
     },
 
     {
-        name: "Стул",
+        id: 4,
+        name: "Стул Lars желтый пластик Ш.48 В.83 Г.56 Вес 5.5кг...",
         price: 7132,
         discount: 0,
-        image: "img/",
+        image: "img/4.jpg",
         isInCart: false
     },
 
     {
-        name: "Стул",
+        id: 5,
+        name: "Стул Lars желтый пластик Ш.48 В.83 Г.56 Вес 5.5кг...",
         price: 1000000,
         discount: 15,
-        image: "img/",
+        image: "img/5.jpg",
         isInCart: false
     },
 
     {
-        name: "Стул",
+        id: 6,
+        name: "Стул Lars желтый пластик Ш.48 В.83 Г.56 Вес 5.5кг...",
         price: 7132,
         discount: 0,
-        image: "img/",
+        image: "img/6.jpg",
         isInCart: false
     },
-    
-     {
-        name: "Стул",
+
+    {
+        id: 7,
+        name: "Стул Lars желтый пластик Ш.48 В.83 Г.56 Вес 5.5кг...",
         price: 7132,
         discount: 0,
-        image: "img/",
+        image: "img/7.jpg",
+        isInCart: false
+    },
+
+    {
+        id: 8,
+        name: "Стул Lars желтый пластик Ш.48 В.83 Г.56 Вес 5.5кг...",
+        price: 7132,
+        discount: 0,
+        image: "img/8.jpg",
         isInCart: false
     }
 ]
@@ -71,24 +87,26 @@ class Items {
         console.log(goods);
 
         let b = '';
+         let noDisc = `<div class="discount" style="display: none"></div>`;
         goods.length > 21 ? b = 'товар' : b = 'товаров';
 
-        itemsLength.insertAdjacentHTML("beforeEnd",`${goods.length + ' ' + b}`);
+        itemsLength.insertAdjacentHTML("beforeEnd", `${goods.length + ' ' + b}`);
 
         goods.forEach(item => {
-            let priceEnd =  item.price - ( item.price * ( item.discount / 100))
+            let priceEnd = item.price - (item.price * (item.discount / 100));
+            item.discount !== 0 ? noDisc = `<div class="discount">- ${item.discount} %</div>` : noDisc;
+
             container.insertAdjacentHTML("beforeEnd", `
-            <div class="col itemCard">
-                        <img src="img/Bitmap@2x.jpg" width="200" height="200">
-                        <div class="discount">-30%</div>
-                        <span class="afterDiscount">7 321 ₽ <small class="beforeDiscount">1 000 000 ₽</small></span>
-                        <span class="product_name">Стул Lars желтый пластик Ш.48 В.83 Г.56 Вес 5.5кг...</span>
-                        <button class="buyBtn">В корзину</button>
-                    </div>
+            <div class="col-3 itemCard">
+            <img src=${item.image}>
+            ${noDisc}
+            <span class="afterDiscount">${priceEnd} ₽  <small class="beforeDiscount">${item.price} ₽</small></span>
+            <span class="product_name">${item.name}</span>
+            <button class="buyBtn">В корзину</button>
+        </div>
             `);
         })
 
-        
     }
 }
 

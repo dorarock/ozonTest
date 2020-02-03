@@ -101,6 +101,11 @@ main {
     max-width: 216px;
 }
 
+.itemCard img {
+    height: 200px;
+}
+
+
 .discount {
     min-width: 39px;
     min-height: 20px;
