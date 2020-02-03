@@ -1,5 +1,8 @@
+"use strict";
+
 let container = document.querySelector('.row');
 let itemsLength = document.querySelector('.itemsLength');
+
 let goods = [
     {
         id: 1,
@@ -58,7 +61,7 @@ let goods = [
     {
         id: 7,
         name: "Стул Lars желтый пластик Ш.48 В.83 Г.56 Вес 5.5кг...",
-        price: 7132,
+        price: 9999,
         discount: 0,
         image: "img/7.jpg",
         isInCart: false
@@ -67,48 +70,80 @@ let goods = [
     {
         id: 8,
         name: "Стул Lars желтый пластик Ш.48 В.83 Г.56 Вес 5.5кг...",
-        price: 7132,
-        discount: 0,
+        price: 10000,
+        discount: 15,
         image: "img/8.jpg",
         isInCart: false
     }
 ]
 
 class Items {
-    constructor() {
-        // this.name = goods.name;
-        // this.price = goods.price;
-        // this.discount = goods.discount;
-        // this.image = goods.image;
-        // this.isInCart = goods.isInCart
+    constructor(productCart) {
+        this.productCart = productCart;
     }
 
-    _render(goods) {
-        console.log(goods);
-
+    render(goods) {
         let b = '';
-         let noDisc = `<div class="discount" style="display: none"></div>`;
-        goods.length > 21 ? b = 'товар' : b = 'товаров';
+        let noDisc = `<p class="discount" style="display: none"></p>`;
 
+        goods.length > 21 ? b = 'товар' : b = 'товаров';
         itemsLength.insertAdjacentHTML("beforeEnd", `${goods.length + ' ' + b}`);
+
 
         goods.forEach(item => {
             let priceEnd = item.price - (item.price * (item.discount / 100));
-            item.discount !== 0 ? noDisc = `<div class="discount">- ${item.discount} %</div>` : noDisc;
+
 
             container.insertAdjacentHTML("beforeEnd", `
             <div class="col-3 itemCard">
-            <img src=${item.image}>
-            ${noDisc}
-            <span class="afterDiscount">${priceEnd} ₽  <small class="beforeDiscount">${item.price} ₽</small></span>
+            <img class="productImg" src=${item.image}>
+            ${item.discount == 0 ? `${noDisc}` : `<p class="discount"> -${item.discount}%</p>`}
+            <span class="afterDiscount">${priceEnd < 10000 ? priceEnd : new Intl.NumberFormat('ru-RU').format(priceEnd)} ₽ ${item.discount == 0 ? '' : `<small class="beforeDiscount">${item.price < 10000 ? item.price : new Intl.NumberFormat('ru-RU').format(item.price)} ₽</small>`}</span>
             <span class="product_name">${item.name}</span>
-            <button class="buyBtn">В корзину</button>
+            <button class="buyBtn" data-id=${item.id}>В корзину</button>
         </div>
             `);
+
         })
 
+        this._setCallbacks();
     }
+
+    _setCallbacks() {
+        let buyBtn = document.querySelectorAll('.buyBtn');
+        let productNum = document.querySelector('.productNum');
+        console.log(buyBtn, productNum);
+        let count = 1;
+
+        for (let i = 0; i < buyBtn.length; i++) {
+            buyBtn[i].addEventListener('click', () => {
+                console.log(`${buyBtn[i].dataset.id}`);
+                productNum.innerHTML = count;
+                count++;
+                buyBtn[i].classList.add('buyBtnAcvtive');
+                buyBtn[i].innerHTML = 'В корзине';
+                this.productCart.addToCart(buyBtn[i].dataset.id);
+            })
+        }
+
+    }
+
 }
 
-let items = new Items();
-items._render(goods);
+
+class ProductCart {
+    constructor() {
+        this.cart = [];
+    }
+
+    addToCart(productId) {
+        this.cart = [...this.cart, productId]
+        console.log(this.cart);
+    }
+    
+
+}
+
+let productCart = new ProductCart();
+let items = new Items(productCart);
+items.render(goods);
