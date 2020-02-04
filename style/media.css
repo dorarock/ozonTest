@@ -1,0 +1,241 @@
+@media (min-width: 600px) {
+    .containerr {
+        min-width: 600px;
+        margin: 0 auto;
+        padding: 0;
+        font-family: 'GT Eesti Pro Display';
+    }
+
+    .main {
+        padding-left: 24px;
+        padding-right: 14px;
+    }
+
+    .info_txt {
+        display: block;
+        margin: 0;
+        padding: 0;
+        font-size: 12px;
+        color: #99A3AE;
+    }
+
+    .order_header {
+        padding: 0;
+        margin-top: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .order_header a {
+        font-style: normal;
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 14px;
+    }
+
+    .order_header_info {
+        text-align: right;
+    }
+
+    .order_header_info a {
+        color: #025BFF;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 14px;
+    }
+
+    .bonuce {
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .main_header {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 32px;
+        letter-spacing: 0.1px;
+        margin-bottom: 14px;
+    }
+
+    .main_txt {
+        padding: 0;
+        margin: 0;
+        font-style: normal;
+        font-size: 18px;
+        line-height: 21px;
+        letter-spacing: 0.047093px;
+
+    }
+
+    .order_number {
+        display: inline;
+        color: #005BFF;
+        cursor: pointer;
+    }
+
+    .catalog_btn {
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+        background: #005BFF;
+        border: 1px solid #005BFF;
+        border-radius: 4px;
+        width: 210px;
+        height: 48px;
+        color: white;
+        font-size: 18px;
+        line-height: 48px;
+        transition: 0.3s;
+        margin-top: 22px;
+    }
+
+    .catalog_btn:hover {
+        background: white;
+        border: 1px solid #005BFF;
+        color: #005BFF;
+        transition: 0.3s;
+    }
+
+    .helpLink {
+        display: block;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 29px;
+        color: #005BFF;
+        letter-spacing: 1px;
+        margin-top: 21px;
+    }
+
+    .txt {
+        padding: 0;
+        margin: 0;
+        margin-top: 10px;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+
+    .icons {
+        width: 600px;
+        margin-top: 60px;
+        text-align: center;
+        overflow: hidden;
+        margin: 0 auto;
+    }
+
+    .icons_item {
+        width: 100px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        float: left;
+    }
+
+    .icons_item {
+        font-size: 13px;
+        line-height: 16px;
+    }
+
+    .notes {
+        margin-top: 42px;
+    }
+
+    .notes_txt {
+        padding: 0;
+        margin: 0 auto;
+        max-width: 545px;
+        font-size: 10px;
+        line-height: 16px;
+    }
+
+    .social {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 59px;
+    }
+
+    .store {
+        width: 124px;
+        height: 38px;
+        background-color: #001A34;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .google {
+        position: relative;
+    }
+
+    .google:before {
+        content: "Загрузите в";
+        color: white;
+        position: absolute;
+        font-family: 'Arial';
+        font-size: 10px;
+        top: 3px;
+        left: 37px;
+    }
+
+    .icon_square {
+        width: 38px;
+        height: 38px;
+        background-color: #001A34;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .footer_small {
+        margin-top: 37px;
+    }
+
+    .footer_info {
+        padding: 0;
+        margin: 0;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 10px;
+        line-height: 16px;
+        text-align: center;
+    }
+
+    .footer_info a {
+        color: #005DF6;
+        cursor: pointer;
+    }
+
+    .footer {
+        text-align: center;
+        margin-top: 24px;
+        padding-bottom: 98px;
+    }
+
+    .footer ul {
+        width: 470px;
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    .footer ul li {
+        display: inline;
+        padding-right: 24px;
+
+    }
+
+    .footer ul li a {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 10px;
+        line-height: 16px;
+        color: #005DF6;
+    }
+
+}
