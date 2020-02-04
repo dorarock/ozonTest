@@ -11,6 +11,7 @@
 
 .logo {
     padding-top: 20px;
+    cursor: pointer;
 }
 
 .menu_list {
@@ -50,11 +51,13 @@
 .pulse {
     fill: #808D9A;
     transition: 1s;
+    cursor: pointer;
 }
 
 .pulse:hover {
     transition: 1s;
     transform: scale(1.2);
+    cursor: pointer;
 }
 
 .productNum {
@@ -99,6 +102,7 @@ main {
 .itemCard {
     position: relative;
     max-width: 216px;
+    cursor: pointer;
 }
 
 .productImg {
@@ -163,12 +167,15 @@ main {
     font-size: 14px;
     line-height: 18px;
     transition: 0.2s;
+    outline: none;
+    cursor: pointer;
 }
 
 .buyBtn:hover {
     background-color: #F2F3F5;
     color: #005BFF;
     transition: 0.2s;
+    cursor: pointer;
 }
 
 .buyBtnAcvtive {
@@ -185,5 +192,96 @@ main {
     font-family: 'GT Eesti Pro Display';
     font-size: 14px;
     line-height: 18px;
+    font-weight: 600;
+}
+
+/*CART*/
+.cart_wrapper h1,
+h2,
+span,
+small {
+    font-family: 'GT Eesti Pro Display';
+    padding: 0;
+    margin: 0;
+}
+
+.cart_wrapper {
+    max-width: 696px;
+}
+
+.grey {
+    background-color: #F2F3F5;
+    padding-left: 24px;
+}
+
+.cart_header {
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.item {
+    border-bottom: 1px solid rgba(0, 26, 52, 0.163844);
+    display: flex;
+    align-items: center;
+    min-height: 106px;
+    padding-left: 24px;
+}
+
+.item img {
+    display: inline;
+    overflow: hidden;
+}
+
+.cart_product_name {
+    max-width: 216px;
+
+}
+
+.product_price {
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 600;
+}
+
+.order {
+    border-bottom: 1px solid rgba(0, 26, 52, 0.163844);
+}
+
+.order_header {
+    font-size: 20px;
+    line-height: 26px;
+    padding-top: 24px;
+}
+
+.flex_wrapper {
+    display: flex;
+    padding-top: 16px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.order_txt {
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.order_disc {
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.order_sum {
+    font-size: 16px;
+    line-height: 20px;
+    padding-right: 24px;
+    font-weight: 600;
+}
+
+.order_disc_sum {
+    font-size: 16px;
+    line-height: 20px;
+    padding-right: 24px;
+    color: #F91155;
     font-weight: 600;
 }

@@ -2,6 +2,7 @@
 
 let container = document.querySelector('.row');
 let itemsLength = document.querySelector('.itemsLength');
+let cartIcon = document.querySelector('.cartIcon');
 
 let goods = [
     {
@@ -107,6 +108,7 @@ class Items {
         })
 
         this._setCallbacks();
+        this.productCart._setCallbacks();
     }
 
     _setCallbacks() {
@@ -140,10 +142,25 @@ class ProductCart {
         this.cart = [...this.cart, productId]
         console.log(this.cart);
     }
-    
+
+    _setCallbacks() {
+
+        cartIcon.addEventListener('click', () => {
+            this._renderCart();
+        })
+    }
+
+    _renderCart() {
+        
+
+    }
+
+
+
 
 }
 
 let productCart = new ProductCart();
+
 let items = new Items(productCart);
 items.render(goods);
