@@ -1,3 +1,13 @@
+@font-face {font-family: "GT Eesti Pro Display";
+    src: url("http://db.onlinewebfonts.com/t/3dad38b96d1a28deaba765fa3a16697f.eot"); /* IE9*/
+    src: url("http://db.onlinewebfonts.com/t/3dad38b96d1a28deaba765fa3a16697f.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("http://db.onlinewebfonts.com/t/3dad38b96d1a28deaba765fa3a16697f.woff2") format("woff2"), /* chrome firefox */
+    url("http://db.onlinewebfonts.com/t/3dad38b96d1a28deaba765fa3a16697f.woff") format("woff"), /* chrome firefox */
+    url("http://db.onlinewebfonts.com/t/3dad38b96d1a28deaba765fa3a16697f.ttf") format("truetype"), /* chrome firefox opera Safari, Android, iOS 4.2+*/
+    url("http://db.onlinewebfonts.com/t/3dad38b96d1a28deaba765fa3a16697f.svg#GT Eesti Pro Display") format("svg"); /* iOS 4.1- */
+}
+
+
 .container {
     margin-top: 10px;
 }
@@ -115,6 +125,7 @@ main {
     position: relative;
     max-width: 216px;
     cursor: pointer;
+    margin-bottom: 40px;
 }
 
 .productImg {

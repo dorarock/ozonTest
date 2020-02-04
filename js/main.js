@@ -151,18 +151,19 @@ class ProductCart {
 
     _renderCart(goods) {
         container.remove();
-        main_items_header.insertAdjacentHTML = ("beforeEnd", "Корзина");
-        let b = '';
-        this.cart.length < 21 ? b = 'товарa' : b = 'товар';
-        itemsLength.innerHTML = `${this.cart.length + ' ' + b}`
+        this.cart.length == 0 ? cart_wrapper.insertAdjacentHTML("beforeEnd", `<div class="cap">Зайдите в <a href="index.html">каталог</a> и выберете товар!</div>`)
+        : ''; 
+        // : cart_wrapper.insertAdjacentHTML("beforeEnd", `<div class="cap">ID Вашего товара: ${this.cart}</div>`);
+        // console.log(goods[this.cart[0] - 1]['price']);
+        let suffix = '';
+        this.cart.length < 21 ? suffix = 'товарa' : suffix = 'товар';
+        main_items_header.innerHTML =  `Корзина <small class="itemsLength">${this.cart.length + ' ' + suffix}</small>`;
 
-        this.cart.length == 0 ? cart_wrapper.insertAdjacentHTML("beforeEnd", `<div class="cap">Зайдите в <a href="index.html">каталог</a> и выберете товар!</div>`) 
-        : cart_wrapper.insertAdjacentHTML("beforeEnd", `<div class="cap">ID Вашего товара: ${this.cart}</div>`);
+        
     }
 
 }
 
 let productCart = new ProductCart();
-
 let items = new Items(productCart);
 items.render(goods);
