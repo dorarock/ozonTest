@@ -2,6 +2,18 @@
     margin-top: 10px;
 }
 
+.cap {
+    font-family: 'GT Eesti Pro Display';
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.68px;
+    line-height: 100%;
+}
+
+.cap a {
+    color: #F91155;
+}
+
 .menu {
     width: 1024px;
     height: 60px;
@@ -205,6 +217,18 @@ small {
     margin: 0;
 }
 
+.checkbox {
+    cursor: pointer;
+}
+
+label {
+    padding-left: 17px;
+    font-family: 'GT Eesti Pro Display';
+    font-size: 14px;
+    line-height: 18px;
+    cursor: pointer;
+}
+
 .cart_wrapper {
     max-width: 696px;
 }
@@ -218,6 +242,18 @@ small {
     min-height: 50px;
     display: flex;
     align-items: center;
+    justify-content: space-between
+}
+
+cart_header span {
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.red {
+    color: #F91155;
+    margin-right: 24px;
+    display: none;
 }
 
 .item {
@@ -231,17 +267,20 @@ small {
 .item img {
     display: inline;
     overflow: hidden;
+    margin-left: 16px;
 }
 
 .cart_product_name {
     max-width: 216px;
-
+    margin-left: 16px;
 }
 
 .product_price {
     font-size: 20px;
     line-height: 26px;
     font-weight: 600;
+    margin-left: auto;
+    margin-right: 24px;
 }
 
 .order {
@@ -269,6 +308,7 @@ small {
 .order_disc {
     font-size: 16px;
     line-height: 20px;
+    padding-bottom: 16px; 
 }
 
 .order_sum {
@@ -284,4 +324,50 @@ small {
     padding-right: 24px;
     color: #F91155;
     font-weight: 600;
+}
+
+.total_cost_txt {
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 600;
+    margin-bottom: 26px;
+}
+
+.total_cost {
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 600;
+    padding-right: 24px;
+}
+
+.order_info {
+    font-size: 16px;
+    line-height: 20px;
+    color: #808D9A;
+    font-weight: 100;
+    max-width: 298px;
+}
+
+.checkoutBtn {
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    background-color: #005BFF;
+    width: 298px;
+    height: 48px;
+    border-radius: 3px;
+    color: white;
+    font-family: 'GT Eesti Pro Display';
+    font-size: 16px;
+    line-height: 20px;
+    transition: 0.2s;
+    outline: none;
+    cursor: pointer;
+}
+
+.checkoutBtn:hover {
+    font-size: 19px;
+    transition: 0.2s;
+    cursor: pointer;
 }

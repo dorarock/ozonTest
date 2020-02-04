@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/bootstrap-grid.min.css">
     <link rel="stylesheet" href="style/normalize.css">
-    //
-    <link href="//db.onlinewebfonts.com/c/3dad38b96d1a28deaba765fa3a16697f?family=GT+Eesti+Pro+Display" rel="stylesheet" type="text/css" />
+    <!-- <link href="//db.onlinewebfonts.com/c/3dad38b96d1a28deaba765fa3a16697f?family=GT+Eesti+Pro+Display" rel="stylesheet" type="text/css" /> -->
     <title>Каталог</title>
 </head>
 
@@ -50,49 +49,55 @@
 -->
                 </div>
                 <div class="cart_wrapper">
+<!--
                     <div class="cart_header grey">
-                        <span> <input type="checkbox">Выбрать все</span><span>Удалить выбранное</span>
+                        <span><input type="checkbox" class="checkbox" id="checkbox"><label for="checkbox">Выбрать все</label></span>
+                        <span class="red">Удалить выбранное</span>
                     </div>
                     <div class="item_wrapper">
                         <div class="item">
-                            <input type="checkbox">
+                            <input type="checkbox" class="checkbox" id="checkbox">
                             <img src="img/4.jpg" width="43" height="67">
                             <span class="cart_product_name">Стул Lars желтый пластик Ш.48 В.83 Г.56 Вес 5.5кг...</span>
                             <small class="product_price">7321 Р</small>
                         </div>
                         <div class="item">
-                            <input type="checkbox">
+                            <input type="checkbox" class="checkbox" id="checkbox">
                             <img src="img/7.jpg" width="43" height="67">
                             <span class="cart_product_name">Стул Lars желтый пластик Ш.48 В.83 Г.56 Вес 5.5кг...</span>
                             <small class="product_price">7321 Р</small>
                         </div>
                     </div>
 
-                    <div class="order grey">
-                        <h2 class="order_header">Ваш заказ:</h2>
-                        <div class="flex_wrapper">
-                            <span class="order_txt">3 товара на сумму</span>
-                            <small class="order_sum">26746 Р</small>
+                    <div class="cart_footer_wrapper grey">
+                        <div class="order">
+                            <h2 class="order_header">Ваш заказ:</h2>
+                            <div class="flex_wrapper">
+                                <span class="order_txt">3 товара на сумму</span>
+                                <small class="order_sum">26746 Р</small>
+                            </div>
+                            <div class="flex_wrapper">
+                                <span class="order_disc">Скидка</span>
+                                <small class="order_disc_sum">-465 Р</small>
+                            </div>
                         </div>
-                        <div class="flex_wrapper">
-                            <span class="order_disc">Скидка</span>
-                            <small class="order_disc_sum">-465 Р</small>
+                        <div class="checkout">
+                            <div class="flex_wrapper">
+                                <span class="total_cost_txt">Общая стоимость</span>
+                                <small class="total_cost">26746 Р</small>
+                            </div>
+                            <div class="flex_wrapper">
+                                <span class="order_info">Доступные способы и время доставки можно выбрать при оформлении заказа</span>
+                                <button class="checkoutBtn">Оформить</button>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="grey">
-                        <span>Общая стоимость</span>
-                        <small>26746 Р</small>
-                    </div>
-                    <div class="grey">
-                        <small>Доступные способы и время доставки можно выбрать при оформлении заказа</small>
-                        <button class="checkout">Оформить</button>
-                    </div>
+-->
                 </div>
             </div>
         </main>
 
-        <!--        <script src="js/main.js"></script>-->
+     <script src="js/main.js"></script>
 </body>
 
 </html>

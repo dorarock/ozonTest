@@ -1,8 +1,10 @@
 "use strict";
 
 let container = document.querySelector('.row');
+let main_items_header = document.querySelector('.main_items_header');
 let itemsLength = document.querySelector('.itemsLength');
 let cartIcon = document.querySelector('.cartIcon');
+let cart_wrapper = document.querySelector('.cart_wrapper');
 
 let goods = [
     {
@@ -96,7 +98,7 @@ class Items {
 
 
             container.insertAdjacentHTML("beforeEnd", `
-            <div class="col-3 itemCard">
+            <div class="col-3 itemCard" id=${item.id}>
             <img class="productImg" src=${item.image}>
             ${item.discount == 0 ? `${noDisc}` : `<p class="discount"> -${item.discount}%</p>`}
             <span class="afterDiscount">${priceEnd < 10000 ? priceEnd : new Intl.NumberFormat('ru-RU').format(priceEnd)} ₽ ${item.discount == 0 ? '' : `<small class="beforeDiscount">${item.price < 10000 ? item.price : new Intl.NumberFormat('ru-RU').format(item.price)} ₽</small>`}</span>
@@ -115,16 +117,14 @@ class Items {
         let buyBtn = document.querySelectorAll('.buyBtn');
         let productNum = document.querySelector('.productNum');
         console.log(buyBtn, productNum);
-        let count = 1;
 
         for (let i = 0; i < buyBtn.length; i++) {
             buyBtn[i].addEventListener('click', () => {
                 console.log(`${buyBtn[i].dataset.id}`);
-                productNum.innerHTML = count;
-                count++;
                 buyBtn[i].classList.add('buyBtnAcvtive');
                 buyBtn[i].innerHTML = 'В корзине';
                 this.productCart.addToCart(buyBtn[i].dataset.id);
+                productNum.innerHTML = this.productCart.cart.length;
             })
         }
 
@@ -144,19 +144,21 @@ class ProductCart {
     }
 
     _setCallbacks() {
-
         cartIcon.addEventListener('click', () => {
-            this._renderCart();
+            this._renderCart(goods);
         })
     }
 
-    _renderCart() {
-        
+    _renderCart(goods) {
+        container.remove();
+        main_items_header.insertAdjacentHTML = ("beforeEnd", "Корзина");
+        let b = '';
+        this.cart.length < 21 ? b = 'товарa' : b = 'товар';
+        itemsLength.innerHTML = `${this.cart.length + ' ' + b}`
 
+        this.cart.length == 0 ? cart_wrapper.insertAdjacentHTML("beforeEnd", `<div class="cap">Зайдите в <a href="index.html">каталог</a> и выберете товар!</div>`) 
+        : cart_wrapper.insertAdjacentHTML("beforeEnd", `<div class="cap">ID Вашего товара: ${this.cart}</div>`);
     }
-
-
-
 
 }
 
