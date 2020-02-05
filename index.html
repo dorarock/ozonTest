@@ -19,7 +19,7 @@
     </p>
     <div class="container">
         <div class="menu">
-            <div class="logo"><a href="https://www.ozon.ru/?gclid=CjwKCAiAyeTxBRBvEiwAuM8dnRLyhJZfZSezK1wHn8SFfihq3Lsx-HBzRaioE1I1AgtbLSAqdBTr5hoCh2wQAvD_BwE"><img src="img/logo.png" alt="ОЗОН"></a></div>
+            <div class="logo"><a href="https://www.ozon.ru/?gclid=CjwKCAiAyeTxBRBvEiwAuM8dnRLyhJZfZSezK1wHn8SFfihq3Lsx-HBzRaioE1I1AgtbLSAqdBTr5hoCh2wQAvD_BwE" target="blank"><img src="img/logo.png" alt="ОЗОН"></a></div>
             <ul class="menu_list">
                 <li><a href="index.html">каталог</a></li>
                 <li><a href="#">доставка</a></li>
@@ -43,8 +43,12 @@
                 </div>
                 <div class="cart_wrapper">
                     <div class="cart_header grey">
-                        <span><input type="checkbox" class="checkbox" id="checkbox"><label for="checkbox">Выбрать все</label></span>
-                        <span class="red">Удалить выбранное</span>
+                        <!--
+                            <div><div class="checkbox cheked"></div><span>Выбрать все</span></div>
+                            <div class="checkbox unCheked"></div>
+-->
+                        <span><input type="checkbox" class="checkbox" id="checkboxFirst"><label for="checkboxFirst" class="selectAll">Выбрать все</label></span>
+                        <span class="red label">Удалить выбранное</span>
                     </div>
                     <div class="item_wrapper">
                     </div>
@@ -67,7 +71,7 @@
                             </div>
                             <div class="flex_wrapper checkout">
                                 <span class="order_info">Доступные способы и время доставки можно выбрать при оформлении заказа</span>
-                                <button class="checkoutBtn">Оформить</button>
+                                <button class="checkoutBtn"><a href="processedOrder.html" target="blank">Оформить</a></button>
                             </div>
                         </div>
                     </div>
@@ -75,7 +79,5 @@
             </div>
         </main>
     </div>
-    <script src="js/main.js"></script>
-</body>
-
-</html>
+     <script src="js/main.js"></script> 
+</body></html>

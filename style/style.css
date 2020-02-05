@@ -1,10 +1,17 @@
-@font-face {font-family: "GT Eesti Pro Display";
-    src: url("http://db.onlinewebfonts.com/t/3dad38b96d1a28deaba765fa3a16697f.eot"); /* IE9*/
-    src: url("http://db.onlinewebfonts.com/t/3dad38b96d1a28deaba765fa3a16697f.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
-    url("http://db.onlinewebfonts.com/t/3dad38b96d1a28deaba765fa3a16697f.woff2") format("woff2"), /* chrome firefox */
-    url("http://db.onlinewebfonts.com/t/3dad38b96d1a28deaba765fa3a16697f.woff") format("woff"), /* chrome firefox */
-    url("http://db.onlinewebfonts.com/t/3dad38b96d1a28deaba765fa3a16697f.ttf") format("truetype"), /* chrome firefox opera Safari, Android, iOS 4.2+*/
-    url("http://db.onlinewebfonts.com/t/3dad38b96d1a28deaba765fa3a16697f.svg#GT Eesti Pro Display") format("svg"); /* iOS 4.1- */
+@font-face {
+    font-family: "GT Eesti Pro Display";
+    src: url("http://db.onlinewebfonts.com/t/3dad38b96d1a28deaba765fa3a16697f.eot");
+    /* IE9*/
+    src: url("http://db.onlinewebfonts.com/t/3dad38b96d1a28deaba765fa3a16697f.eot?#iefix") format("embedded-opentype"),
+        /* IE6-IE8 */
+        url("http://db.onlinewebfonts.com/t/3dad38b96d1a28deaba765fa3a16697f.woff2") format("woff2"),
+        /* chrome firefox */
+        url("http://db.onlinewebfonts.com/t/3dad38b96d1a28deaba765fa3a16697f.woff") format("woff"),
+        /* chrome firefox */
+        url("http://db.onlinewebfonts.com/t/3dad38b96d1a28deaba765fa3a16697f.ttf") format("truetype"),
+        /* chrome firefox opera Safari, Android, iOS 4.2+*/
+        url("http://db.onlinewebfonts.com/t/3dad38b96d1a28deaba765fa3a16697f.svg#GT Eesti Pro Display") format("svg");
+    /* iOS 4.1- */
 }
 
 
@@ -153,12 +160,21 @@ main {
     line-height: 20px;
 }
 
+.afterDiscountColor {
+    font-family: 'GT Eesti Pro Display';
+    font-size: 20px;
+    color: #F91155;
+    font-weight: 800;
+    margin-top: 10px;
+}
+
 .afterDiscount {
     font-family: 'GT Eesti Pro Display';
     font-size: 20px;
     color: #F91155;
     font-weight: 800;
     margin-top: 10px;
+    color: black;
 }
 
 .beforeDiscount {
@@ -258,6 +274,28 @@ label {
     justify-content: space-between
 }
 
+.chekAll {
+    display: flex;
+}
+
+
+/*
+.checkbox {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+}
+
+.cheked {
+    background-color: #005BFF;
+}
+
+.unCheked {
+    background-color: white;
+    border: 1px solid #005BFF;
+}
+*/
+
 cart_header span {
     font-size: 14px;
     line-height: 18px;
@@ -266,7 +304,14 @@ cart_header span {
 .red {
     color: #F91155;
     margin-right: 24px;
-    display: none;
+    cursor: pointer;
+    transition: 0.3s;
+    /* display: none; */
+}
+
+.red:hover {
+    color: #005BFF;
+    transition: 0.3s;
 }
 
 .item {
@@ -297,6 +342,11 @@ cart_header span {
     margin-right: 24px;
 }
 
+.product_count {
+    font-size: 12px;
+    color: #F91155;
+}
+
 
 .order {
     border-bottom: 1px solid rgba(0, 26, 52, 0.163844);
@@ -323,7 +373,7 @@ cart_header span {
 .order_disc {
     font-size: 16px;
     line-height: 20px;
-    padding-bottom: 16px; 
+    padding-bottom: 16px;
 }
 
 .order_sum {
@@ -377,7 +427,6 @@ cart_header span {
     width: 298px;
     height: 48px;
     border-radius: 3px;
-    color: white;
     font-family: 'GT Eesti Pro Display';
     font-size: 16px;
     line-height: 20px;
@@ -386,15 +435,32 @@ cart_header span {
     cursor: pointer;
 }
 
+.checkoutBtn a {
+    display: block;
+    color: white;
+}
+
 .checkoutBtn:hover {
     font-size: 17px;
     transition: 0.2s;
     cursor: pointer;
 }
 
+.Link {
+    color: #F91155;
+    font-size: 16px;
+    line-height: 20px;
+    transition: 0.2s;
+}
 
+.Link:hover {
+    color: #808D9A;
+    transition: 0.2s;
+}
 
-
-
-
-
+.emptyCart {
+    display: block;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 600;
+}

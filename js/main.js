@@ -5,6 +5,8 @@ let main_items_header = document.querySelector('.main_items_header');
 let itemsLength = document.querySelector('.itemsLength');
 let cartIcon = document.querySelector('.cartIcon');
 let cart_wrapper = document.querySelector('.cart_wrapper');
+let checkoutBtn = document.querySelector('.checkoutBtn');
+let label = document.querySelector('.label');
 
 let goods = {
     1: {
@@ -66,9 +68,41 @@ let goods = {
     8: {
         id: 8,
         name: "Стул Lars желтый пластик Ш.48 В.83 Г.56 Вес 5.5кг...",
-        price: 10000,
+        price: 20000,
         discount: 15,
         image: "img/8.jpg"
+    },
+
+    9: {
+        id: 8,
+        name: "Стул Lars желтый пластик Ш.48 В.83 Г.56 Вес 5.5кг...",
+        price: 10300,
+        discount: 10,
+        image: "https://via.placeholder.com/150"
+    },
+
+    10: {
+        id: 8,
+        name: "Стул Lars желтый пластик Ш.48 В.83 Г.56 Вес 5.5кг...",
+        price: 10500,
+        discount: 0,
+        image: "https://via.placeholder.com/150"
+    },
+
+    11: {
+        id: 8,
+        name: "Стул Lars желтый пластик Ш.48 В.83 Г.56 Вес 5.5кг...",
+        price: 13000,
+        discount: 5,
+        image: "https://via.placeholder.com/150"
+    },
+
+    12: {
+        id: 8,
+        name: "Стул Lars желтый пластик Ш.48 В.83 Г.56 Вес 5.5кг...",
+        price: 20000,
+        discount: 0,
+        image: "https://via.placeholder.com/150"
     }
 }
 
@@ -85,11 +119,15 @@ class Items {
 
         for (let id in goods) {
             let priceEnd = goods[id].price - (goods[id].price * (goods[id].discount / 100));
+
             container.insertAdjacentHTML("beforeEnd", `
             <div class="col-3 itemCard">
             <img class="productImg" src=${goods[id].image}>
             ${goods[id].discount == 0 ? `${noDisc}` : `<p class="discount"> -${goods[id].discount}%</p>`}
-            <span class="afterDiscount">${priceEnd < 10000 ? priceEnd : new Intl.NumberFormat('ru-RU').format(priceEnd)} ₽ ${goods[id].discount == 0 ? '' : `<small class="beforeDiscount">${goods[id].price < 10000 ? goods[id].price : new Intl.NumberFormat('ru-RU').format(goods[id].price)} ₽</small>`}</span>
+            <span class=${goods[id].discount == 0 ? "afterDiscount" : "afterDiscountColor"}>${priceEnd < 10000 ? priceEnd :
+                    new Intl.NumberFormat('ru-RU').format(priceEnd)} ₽ ${goods[id].discount == 0 ? '' :
+                        `<small class="beforeDiscount">${goods[id].price < 10000 ? goods[id].price :
+                            new Intl.NumberFormat('ru-RU').format(goods[id].price)} ₽</small>`}</span>
             <span class="product_name">${goods[id].name}</span>
             <button class="buyBtn" data-id=${id}>В корзину</button>
         </div>
@@ -103,7 +141,7 @@ class Items {
     _setCallbacks() {
         let buyBtn = document.querySelectorAll('.buyBtn');
         let productNum = document.querySelector('.productNum');
-        
+
         for (let i = 0; i < buyBtn.length; i++) {
             buyBtn[i].addEventListener('click', () => {
                 console.log(`${buyBtn[i].dataset.id}`);
@@ -118,10 +156,12 @@ class Items {
 
 }
 
-
 class ProductCart {
-    constructor() {
+    constructor(processed) {
+        this.processed = processed;
         this.cart = {};
+        this.checkbox;
+        this.checkboxFirst;
     }
 
     addToCart(productId) {
@@ -130,24 +170,32 @@ class ProductCart {
     }
 
     _setCallbacks() {
+        let isCatrOpened = false;
         cartIcon.addEventListener('click', () => {
-        this._renderCart(goods);
+            if (isCatrOpened == false) {
+                this._renderCart(goods);
+                isCatrOpened = true;
+            }
+
         });
     }
 
-    // _handler() {
-    //     console.log(this)
-    //     _renderCart(goods).bind(this);
-    // }
-
     _renderCart(goods) {
-        container.remove();
         let cart_wrapper = document.querySelector('.cart_wrapper');
         let item_wrapper = document.querySelector('.item_wrapper');
         let order_txt = document.querySelector('.order_txt');
         let order_sum = document.querySelector('.order_sum');
         let order_disc_sum = document.querySelector('.order_disc_sum');
         let total_cost = document.querySelector('.total_cost');
+
+        if (Object.keys(this.cart).length == 0) {
+            container.remove();
+            cart_wrapper.style.display = 'block';
+            cart_wrapper.innerHTML = `<span class="emptyCart">Зайдите в <a href="index.html" class="Link">каталог</a> и выберете товар</span>`;
+        }
+
+        container.remove();
+        item_wrapper.innerHTML = '';
 
         let suffix = '';
         cart_wrapper.style.display = 'block';
@@ -164,10 +212,10 @@ class ProductCart {
         for (let key in this.cart) {
             item_wrapper.insertAdjacentHTML("beforeEnd", `
                         <div class="item">
-                            <input type="checkbox" class="checkbox" id="checkbox">
+                            <input type="checkbox" class="checkbox" id="checkbox" data-id = ${key}>
                             <img src="${goods[key].image}" width="43" height="67">
                             <span class="cart_product_name">${goods[key].name}</span>
-                            <small class="product_price">${goods[key].price * this.cart[key]} ₽</small>
+                            <small class="product_price">${goods[key].price * this.cart[key]} ₽ <small class="product_count">${this.cart[key]} шт</small></small>
                         </div>
             `);
             productCost.push(this.cart[key] * goods[key].price);
@@ -175,17 +223,45 @@ class ProductCart {
         }
         let totalCost = productCost.reduce((total, amount) => total + amount);
         let totalDiscounCost = productDiscount.reduce((total, amount) => total + amount);
+        let finalCost = totalCost - totalDiscounCost;
         console.log(totalDiscounCost);
 
-        order_txt.innerHTML = `${productCount} товара на сумму`;
-        order_sum.innerHTML = `${totalCost} ₽`;
-        order_disc_sum.innerHTML = ` -${totalDiscounCost} ₽`;
-        total_cost.innerHTML = `${totalCost - totalDiscounCost} ₽`;
+        order_txt.innerHTML = `${productCount} ${suffix} на сумму`;
+        order_sum.innerHTML = `${totalCost < 10000 ? totalCost : new Intl.NumberFormat('ru-RU').format(totalCost)} ₽`;
+        order_disc_sum.innerHTML = ` -${totalDiscounCost < 10000 ? totalDiscounCost : new Intl.NumberFormat('ru-RU').format(totalDiscounCost)} ₽`;
+        total_cost.innerHTML = `${finalCost < 10000 ? finalCost : Intl.NumberFormat('ru-RU').format(finalCost)} ₽`;
 
+        this._setRemoveCallBack();
+        this._setSelectAllCallback();
     }
 
-    
+    _setRemoveCallBack() {
+        label.addEventListener('click', () => {
+            this._removeFromCart();
+        })
+    }
+
+    _setSelectAllCallback() {
+        this.checkbox = document.querySelectorAll('.checkbox');
+        this.checkboxFirst = document.getElementById('checkboxFirst');
+        this.checkboxFirst.addEventListener('click', () => {
+            for(let i = 0; i < this.checkbox.length; i++){
+                this.checkbox[i].checked =  this.checkboxFirst.checked;
+            }
+        })
+    }
+
+    _removeFromCart() {
+        for(let i = 0; i < this.checkbox.length; i++) {
+            if(this.checkbox[i].checked == true) {
+                delete(this.cart[this.checkbox[i].dataset.id]);
+            }
+        }
+         this._renderCart(goods);
+    }
+
 }
+
 
 let productCart = new ProductCart();
 let items = new Items(productCart);

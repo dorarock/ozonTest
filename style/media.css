@@ -1,14 +1,12 @@
 @media (min-width: 600px) {
     .containerr {
-        min-width: 600px;
         margin: 0 auto;
         padding: 0;
         font-family: 'GT Eesti Pro Display';
     }
 
     .main {
-        padding-left: 24px;
-        padding-right: 14px;
+        width: 100%;
     }
 
     .info_txt {
@@ -22,9 +20,21 @@
     .order_header {
         padding: 0;
         margin-top: 15px;
+        margin-bottom: 38px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+    }
+
+    .flex_wrapper {
+        display: flex;
+        align-content: center;
+        justify-content: space-between;
+    }
+
+    .flex_wrapper a {
+        display: block;
+        text-align: center;
     }
 
     .order_header a {
@@ -60,11 +70,16 @@
         margin-bottom: 14px;
     }
 
+    .header_processed {
+        margin-top: 40px;
+    }
+
     .main_txt {
         padding: 0;
         margin: 0;
         font-style: normal;
         font-size: 18px;
+        font-weight: 100;
         line-height: 21px;
         letter-spacing: 0.047093px;
 
@@ -74,6 +89,110 @@
         display: inline;
         color: #005BFF;
         cursor: pointer;
+    }
+
+    .row {
+        
+/*        margin-left: 2px;*/
+        width: 100%;
+        margin-top: 22px;
+
+    }
+
+    .col_left {
+        width: 30%;
+    }
+    
+    .col_left span {
+        padding-left: 20px;
+    }
+
+    .col_left span {
+        font-style: normal;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 24px;
+        color: #667585;
+    }
+
+    .col_right span {
+        font-style: normal;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .col_right span:first-child {
+        color: #216BFF;
+    }
+
+    .selected_items {
+        width: 100%;
+        margin-top: 50px;
+    }
+
+    .selected_items h3 {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    .selected_item {
+        width: 100%;
+        border: 0.5px solid grey;
+        margin-top: 16px;
+        height: 76px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .selected_item_img {
+        height: 90%;
+        display: block;
+    }
+
+    .item_name {
+        display: block;
+        width: 278px;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 22px;
+        color: #216BFF;
+    }
+
+    .price_flex_wrapper {
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+    }
+
+    .item_total_price {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .item_count {
+        color: #808C99;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .item_price {
+        color: #808C99;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 18px;
     }
 
     .catalog_btn {
@@ -119,9 +238,14 @@
         line-height: 20px;
     }
 
+    .iconSvg {
+        display: block;
+        margin-bottom: 15px;
+        width: 100px;
+    }
 
     .icons {
-        width: 600px;
+        width: 100%;;
         margin-top: 60px;
         text-align: center;
         overflow: hidden;
@@ -237,6 +361,6 @@
         line-height: 16px;
         color: #005DF6;
     }
-    
+
 
 }
