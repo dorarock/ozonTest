@@ -242,11 +242,13 @@ label {
 
 .cart_wrapper {
     max-width: 696px;
+    display: none;
 }
 
 .grey {
     background-color: #F2F3F5;
     padding-left: 24px;
+    padding-right: 24px;
 }
 
 .cart_header {
@@ -273,6 +275,7 @@ cart_header span {
     align-items: center;
     min-height: 106px;
     padding-left: 24px;
+    padding-right: 24px;
 }
 
 .item img {
@@ -293,6 +296,7 @@ cart_header span {
     margin-left: auto;
     margin-right: 24px;
 }
+
 
 .order {
     border-bottom: 1px solid rgba(0, 26, 52, 0.163844);
@@ -348,7 +352,12 @@ cart_header span {
     font-size: 20px;
     line-height: 26px;
     font-weight: 600;
+    font-weight: 600;
     padding-right: 24px;
+}
+
+.checkout {
+    padding-bottom: 20px;
 }
 
 .order_info {
@@ -378,7 +387,7 @@ cart_header span {
 }
 
 .checkoutBtn:hover {
-    font-size: 19px;
+    font-size: 17px;
     transition: 0.2s;
     cursor: pointer;
 }
