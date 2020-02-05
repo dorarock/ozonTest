@@ -78,10 +78,10 @@ class Items {
     }
 
     render(goods) {
-        let b = '';
+        let suffix = '';
         let noDisc = `<p class="discount" style="display: none"></p>`;
-        Object.keys(goods).length > 21 ? b = 'товар' : b = 'товаров';
-        itemsLength.insertAdjacentHTML("beforeEnd", `${Object.keys(goods).length + ' ' + b}`);
+        Object.keys(goods).length > 21 ? suffix = 'товар' : suffix = 'товаров';
+        itemsLength.insertAdjacentHTML("beforeEnd", `${Object.keys(goods).length + ' ' + suffix}`);
 
         for (let id in goods) {
             let priceEnd = goods[id].price - (goods[id].price * (goods[id].discount / 100));
@@ -103,8 +103,7 @@ class Items {
     _setCallbacks() {
         let buyBtn = document.querySelectorAll('.buyBtn');
         let productNum = document.querySelector('.productNum');
-        console.log(buyBtn, productNum);
-
+        
         for (let i = 0; i < buyBtn.length; i++) {
             buyBtn[i].addEventListener('click', () => {
                 console.log(`${buyBtn[i].dataset.id}`);
@@ -132,9 +131,14 @@ class ProductCart {
 
     _setCallbacks() {
         cartIcon.addEventListener('click', () => {
-            this._renderCart(goods);
-        })
+        this._renderCart(goods);
+        });
     }
+
+    // _handler() {
+    //     console.log(this)
+    //     _renderCart(goods).bind(this);
+    // }
 
     _renderCart(goods) {
         container.remove();
@@ -177,7 +181,10 @@ class ProductCart {
         order_sum.innerHTML = `${totalCost} ₽`;
         order_disc_sum.innerHTML = ` -${totalDiscounCost} ₽`;
         total_cost.innerHTML = `${totalCost - totalDiscounCost} ₽`;
+
     }
+
+    
 }
 
 let productCart = new ProductCart();
