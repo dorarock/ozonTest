@@ -195,7 +195,7 @@ class ProductCart {
             this.cart_wrapper.innerHTML = `<span class="emptyCart">Зайдите в <a href="index.html" class="Link">каталог</a> и выберете товар</span>`;
         }
 
-        container.remove();
+        this.container.remove();
         item_wrapper.innerHTML = '';
 
         let suffix = '';
