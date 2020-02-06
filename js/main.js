@@ -1,13 +1,5 @@
 "use strict";
 
-let container = document.querySelector('.row');
-let main_items_header = document.querySelector('.main_items_header');
-let itemsLength = document.querySelector('.itemsLength');
-let cartIcon = document.querySelector('.cartIcon');
-let cart_wrapper = document.querySelector('.cart_wrapper');
-let checkoutBtn = document.querySelector('.checkoutBtn');
-let label = document.querySelector('.label');
-
 let goods = {
     1: {
         id: 1,
@@ -109,18 +101,20 @@ let goods = {
 class Items {
     constructor(productCart) {
         this.productCart = productCart;
+        this.itemsLength;
     }
 
     render(goods) {
         let suffix = '';
         let noDisc = `<p class="discount" style="display: none"></p>`;
         Object.keys(goods).length > 21 ? suffix = 'товар' : suffix = 'товаров';
-        itemsLength.insertAdjacentHTML("beforeEnd", `${Object.keys(goods).length + ' ' + suffix}`);
+        this.itemsLength = document.querySelector('.itemsLength');
+        this.itemsLength.insertAdjacentHTML("beforeEnd", `${Object.keys(goods).length + ' ' + suffix}`);
 
         for (let id in goods) {
             let priceEnd = goods[id].price - (goods[id].price * (goods[id].discount / 100));
 
-            container.insertAdjacentHTML("beforeEnd", `
+            this.productCart.container.insertAdjacentHTML("beforeEnd", `
             <div class="col-3 itemCard">
             <img class="productImg" src=${goods[id].image}>
             ${goods[id].discount == 0 ? `${noDisc}` : `<p class="discount"> -${goods[id].discount}%</p>`}
@@ -162,6 +156,11 @@ class ProductCart {
         this.cart = {};
         this.checkbox;
         this.checkboxFirst;
+        this.main_items_header;
+        this.cartIcon
+        this.cart_wrapper;
+        this.label;
+        this.container = document.querySelector('.row');;
     }
 
     addToCart(productId) {
@@ -170,8 +169,9 @@ class ProductCart {
     }
 
     _setCallbacks() {
+        this.cartIcon = document.querySelector('.cartIcon');
         let isCatrOpened = false;
-        cartIcon.addEventListener('click', () => {
+        this.cartIcon.addEventListener('click', () => {
             if (isCatrOpened == false) {
                 this._renderCart(goods);
                 isCatrOpened = true;
@@ -181,7 +181,8 @@ class ProductCart {
     }
 
     _renderCart(goods) {
-        let cart_wrapper = document.querySelector('.cart_wrapper');
+        this.cart_wrapper = document.querySelector('.cart_wrapper');
+        this.main_items_header = document.querySelector('.main_items_header');
         let item_wrapper = document.querySelector('.item_wrapper');
         let order_txt = document.querySelector('.order_txt');
         let order_sum = document.querySelector('.order_sum');
@@ -190,17 +191,17 @@ class ProductCart {
 
         if (Object.keys(this.cart).length == 0) {
             container.remove();
-            cart_wrapper.style.display = 'block';
-            cart_wrapper.innerHTML = `<span class="emptyCart">Зайдите в <a href="index.html" class="Link">каталог</a> и выберете товар</span>`;
+            this.cart_wrapper.style.display = 'block';
+            this.cart_wrapper.innerHTML = `<span class="emptyCart">Зайдите в <a href="index.html" class="Link">каталог</a> и выберете товар</span>`;
         }
 
         container.remove();
         item_wrapper.innerHTML = '';
 
         let suffix = '';
-        cart_wrapper.style.display = 'block';
+        this.cart_wrapper.style.display = 'block';
         Object.keys(this.cart).length < 21 ? suffix = 'товарa' : suffix = 'товар';
-        main_items_header.innerHTML = `Корзина <small class="itemsLength">${Object.keys(this.cart).length + ' ' + suffix}</small>`;
+        this.main_items_header.innerHTML = `Корзина <small class="itemsLength">${Object.keys(this.cart).length + ' ' + suffix}</small>`;
 
         let productCount = 0;
         let productCost = [];
@@ -236,7 +237,8 @@ class ProductCart {
     }
 
     _setRemoveCallBack() {
-        label.addEventListener('click', () => {
+        this.label = document.querySelector('.label');
+        this.label.addEventListener('click', () => {
             this._removeFromCart();
         })
     }
